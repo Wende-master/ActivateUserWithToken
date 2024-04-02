@@ -10,8 +10,8 @@ Mail Settings, utiliza el correo que crees para realizar las pruebas de activaci
       "Password": "tupassword"
     },
     "ServerSmtp": {
-      "Host": "smtp-mail.outlook.com", //El que quieras, puedes decidir el tipo de email
-      "Port": 587, //el de outlook
+      "Host": "smtp-mail.outlook.com",
+      "Port": 587,
       "EnableSsl": "true",
       "DefaultCredentials": "false"
     }

@@ -1,0 +1,82 @@
+﻿@model Usuario
+
+@{
+    ViewData["Title"] = "Registro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Registro</h1>
+
+<h4>Usuario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Registro">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger">*</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido" class="control-label"></label>
+                <input asp-for="Apellido" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger">*</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger">*</span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger">*</span>
+            </div>
+
+            <div class="form-outline mb-5 position-relative">
+                <label class="form-label" for="imagen"></label>
+                <span asp-validation-for="FotoPerfil" class="text-danger"></span>
+                <img src="~/perfiles/default.png" alt="Default" data-bs-toggle="popover" title="Foto Perfil"
+                     onmouseenter="mostrarPopover(this)"
+                     class="default-icon position-absolute top-50 start-50 translate-middle">
+                <input type="file" id="imagen" asp-for="FotoPerfil" class="form-control d-none" name="imagen" />
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn botones btn-secondary rounded-pill btn-block">Registrar</button>
+                <br />
+                <p>
+                    <span style="color: #f3b201">
+                        @ViewData["ERROR_MESSAGE"]
+                    </span>
+                </p>
+                @* <a asp-controller="Auth" asp-action="Login" class="btn botones rounded-pill btn-secondary">
+                ¿Ya tienes cuenta?
+                </a>  *@
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-outline-dark" asp-controller="Home" asp-action="Index">Volver</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        function mostrarPopover(elemento) {
+            var popover = new bootstrap.Popover(elemento);
+            popover.show();
+            setTimeout(function () {
+                popover.dispose();
+            }, 1100);
+        }
+    </script>
+}
